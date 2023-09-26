@@ -12,19 +12,8 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'  
-
-    - name: Install Dependencies
-      run: yarn install  
-
-    - name: Build Project
-      run: yarn build 
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.TOKEN_GITHUB }}
-        publish_dir: ./dist  
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./  # This assumes that Landing.html is at the root of your repository
