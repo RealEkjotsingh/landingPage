@@ -1,7 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     var signupEmailInput = document.getElementById('signupEmail');
     var loginEmailInput = document.getElementById('loginEmail');
+    var signupPwd = document.getElementById('signupPwd');
+    var confirmPwd = document.getElementById('confirmPwd');
 
     // Define the validation function
     function validateEmail(e, emailInput) {
@@ -23,9 +24,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function validatePasswordMatch(e) {
+        if (signupPwd.value !== confirmPwd.value) {
+            alert('Password and confirm password do not match!');
+            e.preventDefault();
+        }
+    }
+
     // Attach the validation function to the submit event of both forms
     signupEmailInput.closest('form').addEventListener('submit', function(e) {
         validateEmail(e, signupEmailInput);
+        validatePasswordMatch(e);  // Add password match validation here
     });
 
     loginEmailInput.closest('form').addEventListener('submit', function(e) {
