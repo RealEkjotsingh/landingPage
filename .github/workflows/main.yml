@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master  
+      - master  # Ensure this is the correct branch for your repository.
 
 jobs:
   deploy:
@@ -11,9 +11,11 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./  # This assumes that Landing.html is at the root of your repository
+        publish_dir: ./  # Ensure this is the correct directory for your site's contents.
